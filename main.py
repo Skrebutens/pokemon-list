@@ -1,6 +1,6 @@
 
 import csv
-
+import random
 pokemons = []
 
 # https://www.w3schools.com/python/python_file_handling.asp
@@ -21,27 +21,64 @@ while True:
     print("3. Sort by Z-A")
     print("4. Search by text in name")
     print("5. Search by length of name")
-    print("6. Exit")
+    print("6. Izdrukāt pirmos 10 pokemonus")
+    print("7. Izdrukāt pēdējos 10 pokemonus")
+    print("8. Izdrukāt random 10 pokemonus")
+    print("9. Exit")
 
-    choice = input("Enter your choice (1-6): ")
+    choice = input("Enter your choice (1-9): ")
 
     if choice == '1':
-        # https://www.w3schools.com/python/python_lists_access.asp
+        pokemonindex = input("Ieraksti skaitli un tev izdos pokemonu kurš bija zem šī skaitļa: ")
+        print("Tu izvēlējies: " + pokemonindex)
+        print(pokemons[int(pokemonindex)])
         pass
     elif choice == '2':
-        # https://www.w3schools.com/python/python_lists_sort.asp
+        pokemons.sort()
+        print(pokemons)
         pass
     elif choice == '3':
-        # https://www.w3schools.com/python/python_lists_sort.asp
+        pokemons.sort(reverse = True)
+        print(pokemons)
         pass
     elif choice == '4':
-        # https://www.w3schools.com/python/python_lists_comprehension.asp
-        # https://www.w3schools.com/python/ref_string_startswith.asp
+        pokeindex = []
+        name = input("Uzraksti burtu(s) un tev parādīs pokemonus kuri sākās ar šo burtu vai tas burts ir iekļauts to pokemonu vārdā: ")
+        for pokemon in pokemons:
+            if name in pokemon:
+                pokeindex.append(pokemon)
+
+        print("Rekur pokemoni kuri sākās ar burtu/burtiem", str(name), pokeindex)
         pass
     elif choice == '5':
-        # https://www.w3schools.com/python/python_lists_comprehension.asp
+        lengthpokemons = []
+        pokemonsearch = int(input("Ieraksti cik daudz burtu ir tavā pokemonā: "))
+        lengthpokemons = [pokemon for pokemon in pokemons if len(pokemon) == pokemonsearch ]
+        print("Rekur pokemoni ar šo burtu skaitu", lengthpokemons)
         pass
     elif choice == '6':
+        print(pokemons[:10])
+        pass
+    elif choice == '7':
+        print(pokemons[-10:])
+        pass
+    elif choice == '8':
+        start = 0
+        print(pokemons[start:start+10])
+        choice2 = input("n/q: ")
+        while choice2 == "n":
+            start += 10
+            print(pokemons[start:start+10])
+            choice2 = input("n/q: ")
+    if choice2 == '9':
+        random_pokemons = random.sample(pokemons, 10)
+        print(random_pokemons)
+    elif choice2 == 'q':
+
+
+
+        pass
+    elif choice == '9':
         print("Exiting")
         break
     else:
