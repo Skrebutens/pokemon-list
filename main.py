@@ -23,7 +23,7 @@ while True:
     print("5. Search by length of name")
     print("6. Izdrukāt pirmos 10 pokemonus")
     print("7. Izdrukāt pēdējos 10 pokemonus")
-    print("8. Izdrukāt random 10 pokemonus")
+    print("8. Izdrukāt 10 pokemonus")
     print("9. Exit")
 
     choice = input("Enter your choice (1-9): ")
@@ -74,9 +74,6 @@ while True:
         random_pokemons = random.sample(pokemons, 10)
         print(random_pokemons)
     elif choice2 == 'q':
-
-
-
         pass
     elif choice == '9':
         print("Exiting")
